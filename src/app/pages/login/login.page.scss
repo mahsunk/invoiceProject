@@ -1,0 +1,98 @@
+swiper-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+swiper-slide ion-img {
+  max-width: 80%;
+  margin: 60px auto 40px;
+}
+
+swiper-slide h2 {
+  margin-top: 2.8rem;
+}
+
+swiper-slide b {
+  font-weight: 500;
+}
+
+swiper-slide p {
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ion-color-step-600, #60646b);
+}
+
+swiper-slide p b {
+  color: var(--ion-text-color, #000000);
+}
+ion-card-title {
+  font-weight: bold;
+}
+
+// For login Css
+
+.remember-password {
+  display: flex;
+  align-items: center;
+}
+
+.forget-password {
+  margin-left: auto;
+  color: #3880ff; /* Unutma parolasının rengini değiştirmek için */
+}
+
+.login-button {
+  margin-top: 20px;
+}
+.login-content {
+  --padding-top: 50px; /* Yukarıdan boşluk */
+  --padding-bottom: 50px; /* Aşağıdan boşluk */
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+}
+
+.login-toolbar {
+  --background: transparent;
+  margin-bottom: 20px; /* Aralarda boşluk bırakmak için */
+}
+
+.login-agreement {
+  font-style: italic; /* Yazı stilini değiştirmek için */
+  font-size: 14px; /* Yazı boyutunu değiştirmek için */
+}
+
+.link-policy {
+  text-decoration: none; /* Linkin altını çizmeyi kaldır */
+  color: #3880ff; /* Linkin rengini değiştir */
+}
+
+.segment {
+  margin-bottom: 20px; /* Segmentler arasında boşluk bırakmak için */
+}
+
+.form-item {
+  margin-bottom: 15px; /* Form elemanları arasında boşluk bırakmak için */
+}
+
+.login-button {
+  margin-top: 20px; /* Login butonunu yukarı çekmek için */
+}
+
+ion-footer {
+  --background: transparent;
+}
+.social-icon {
+  font-size: 36px; /* Sosyal medya iconlarının boyutu */
+  margin:30px 10px  /* Iconlar arasındaki boşluk */
+}
+.fingerprint-icon {
+  font-size: 60px; /* Parmak izi iconunun boyutu */
+  cursor: pointer; /* Parmak izi iconuna tıklanabilir bir işaret ekler */
+  margin-top: 10px;
+}
+
+ 

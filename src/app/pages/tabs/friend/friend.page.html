@@ -1,0 +1,57 @@
+<ion-content>
+    <!-- Arkadaş Arama -->
+    <ion-searchbar placeholder="Arkadaş ara..." animated="true" [(ngModel)]="searchTerm" class="custom-searchbar"></ion-searchbar>
+  
+    <!-- Header Görüntüsü -->
+    <div class="header-image">
+      <!-- Görüntü veya arka plan görüntüsü buraya gelebilir -->
+      <!-- Örneğin: <img src="assets/header-image.jpg" alt="Header Image"> -->
+      <!-- veya <div class="background-image"></div> -->
+    </div>
+  
+    <!-- Arkadaş Listesi -->
+    <ion-list>
+      <ion-item *ngFor="let friend of friends" [routerLink]="['/profile', friend.id]">
+        <ion-avatar slot="start">
+          <img [src]="friend.profilePictureUrl" alt="Profile Picture">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ friend.name }}</h2>
+          <p>{{ friend.bio }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  
+    <!-- Arkadaşlık İstekleri -->
+    <ion-list *ngIf="friendRequests.length > 0">
+      <ion-list-header>
+        Arkadaşlık İstekleri
+      </ion-list-header>
+      <ion-item *ngFor="let request of friendRequests">
+        <ion-label>{{ request.senderName }} sana arkadaşlık isteği gönderdi.</ion-label>
+        <ion-button color="success" (click)="acceptRequest(request)">Kabul Et</ion-button>
+        <ion-button color="danger" (click)="rejectRequest(request)">Reddet</ion-button>
+      </ion-item>
+    </ion-list>
+
+    <!-- Arkadaşların Aktiviteleri -->
+    <ion-card *ngFor="let friend of friends">
+      <ion-card-header>
+        {{ friend.name }}'in Aktiviteleri
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Arkadaşın son etkinliklerini burada listeleyebilirsiniz -->
+        <!-- Örneğin: Son gönderiler, yorumlar veya diğer etkinlikler -->
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Profil Resmini Büyütme Modalı -->
+    <ion-modal  ></ion-modal>
+
+    <!-- Arkadaş Ekleme Düğmesi -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary"  >
+        <ion-icon name="person-add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-content>

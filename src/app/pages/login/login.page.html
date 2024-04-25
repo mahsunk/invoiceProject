@@ -1,0 +1,214 @@
+<ion-app>
+  <!-- İlk giriş ekranı içeriği -->
+  <ion-header *ngIf="isFirstTimeUser">
+    <!-- İlk giriş ekranı içeriği -->
+  </ion-header>
+
+  <ion-content *ngIf="isFirstTimeUser" fullscreen class="ion-padding" scroll-y="false">
+    <swiper-container>
+      <swiper-slide>
+        <ion-img src="assets/slides/slide-1.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>Invoice Tracking</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-cart-subtitle>Welcome to Invoice Tracking! This app helps you manage your invoices efficiently.</ion-cart-subtitle>
+        </ion-card-content>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="assets/slides/slide-2.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>What is Invoice Tracking?</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Invoice Tracking is a powerful application that enables you to keep track of your invoices and manage your finances effectively.
+        </ion-card-content>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="assets/slides/slide-3.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>How does it work?</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          With Invoice Tracking, you can easily create, edit, and organize your invoices, as well as monitor your payment status and due dates.
+        </ion-card-content>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-img src="assets/slides/slide-4.png"></ion-img>
+        <ion-card-header>
+          <ion-card-title>Ready to get started?</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Sign in to start using Invoice Tracking and take control of your finances today!
+          <br>
+          <ion-button fill="clear" (click)="signIn()">Sign In <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </ion-card-content>
+      </swiper-slide>
+    </swiper-container>
+  </ion-content>
+
+  <!-- Giriş yapmış kullanıcı ekranı içeriği -->
+  <!-- <ion-header *ngIf="!isFirstTimeUser">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button>sa</ion-back-button>
+      </ion-buttons>
+      <ion-title>Log In</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content *ngIf="!isFirstTimeUser">
+    <form>
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
+          <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content> -->
+<!-- 
+
+  <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-text-center">
+    <p>Welcome to our app!</p>
+  </div>
+
+  <ion-segment mode="md" [(ngModel)]="segment">
+    <ion-segment-button value="login">
+      <ion-label>Login</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      <ion-label>Register</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Remember Password</ion-label>
+    <ion-checkbox [(ngModel)]="remember"></ion-checkbox>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label slot="start" (click)="forgotPassword()">Forget Password</ion-label>
+    <ion-label slot="end" (click)="forgotPassword()">Login</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" color="primary" (click)="login()">Login</ion-button>
+
+  <div class="ion-text-center">Or connect with:</div>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="auto" *ngFor="let icon of socialIcons">
+      <ion-icon [name]="icon"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <div class="ion-text-center">
+    <ion-button size="small" fill="clear" (click)="loginWithFingerprint()">Login with fingerprint</ion-button>
+  </div>
+</ion-content> -->
+<!-- <app-login></app-login>  -->
+
+
+
+
+<!-- Burasıı -->
+ 
+<ion-content *ngIf="!isFirstTimeUser" fullscreen class="ion-padding login-content">
+  <ion-toolbar class="login-toolbar">
+    <h1 class="ion-text-center">Login  </h1>
+    <ion-text class="ion-text-center login-agreement">
+      <p><strong>By signing in</strong> you are agreeing our  <br> <a href="#" class="link-policy">Term and privacy policy</a>.</p>
+    </ion-text>
+  </ion-toolbar>
+  
+
+  <ion-segment mode="md" [(ngModel)]="segment" class="segment">
+    <ion-segment-button value="login">
+      <ion-label>Login</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="register">
+      <ion-label>Register</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item *ngIf="segment === 'login'" class="form-item">
+    <ion-label position="stacked">
+      <ion-icon name="mail"></ion-icon>
+      Email
+    </ion-label>
+    <ion-input type="email" label="Email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  
+  <ion-item *ngIf="segment === 'login'" class="form-item">
+    <ion-label position="stacked">
+      <ion-icon name="lock-closed"></ion-icon>
+      Password
+    </ion-label>
+    <ion-input label="Password" type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  
+  <ion-item *ngIf="segment === 'login'" lines="none" class="remember-password">
+    <!-- <ion-label>Remember Password</ion-label> -->
+    <ion-checkbox slot="start" [(ngModel)]="remember">Remember Password</ion-checkbox>
+    <ion-button fill="clear" class="forget-password" (click)="forgotPassword()">Forget Password</ion-button>
+  </ion-item>
+  
+  
+
+  <ion-button expand="block" color="primary" *ngIf="segment === 'login'" (click)="login()" class="login-button">Login</ion-button>
+
+  <!-- Register bileşenini buraya ekleyin -->
+  
+<app-register *ngIf="segment === 'register'"></app-register>
+
+   
+
+  <ion-grid>
+    <!-- Or connect with -->
+    <ion-row class="ion-align-items-center ion-justify-content-center">
+      <ion-col size="auto" *ngFor="let icon of socialIcons">
+        <ion-icon [name]="icon" size="large" class="social-icon"></ion-icon>
+      </ion-col>
+    </ion-row>
+  
+     <!-- Fingerprint icon -->
+  <ion-row class="ion-align-items-center ion-justify-content-center">
+    <ion-col size="auto">
+      <ion-icon name="finger-print-outline"   class="fingerprint-icon" *ngIf="segment === 'login'" (click)="loginWithFingerprint()"  ></ion-icon>
+    </ion-col>
+  </ion-row>
+     
+  </ion-grid>
+
+  <!-- <ion-toolbar translucent class="ion-text-center">
+     
+ 
+    <ion-icon name="finger-print-outline" style="font-size: 60px;" fill="clear" *ngIf="segment === 'login'" (click)="loginWithFingerprint()"></ion-icon>
+</ion-toolbar> -->
+   
+
+  
+</ion-content>
+
+  
+</ion-app>

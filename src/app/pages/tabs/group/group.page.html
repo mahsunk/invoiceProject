@@ -1,0 +1,51 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Groups</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search groups" [debounce]="1000"></ion-searchbar>
+  </ion-toolbar>
+  (ionChange)="search($event)
+  <ion-list lines="full">
+    <ion-item *ngFor="let group of groups" [routerLink]="['/group-details-page', group.groupId]">
+      <ion-label>{{ group.groupName }}</ion-label>
+       
+
+
+    </ion-item>
+  </ion-list>
+</ion-content> -->
+
+ 
+<ion-content>
+  <!-- Search Bar -->
+  <ion-searchbar placeholder="Search groups..." animated="true" [(ngModel)]="searchTerm" class="custom-searchbar"></ion-searchbar>
+  <!-- Group Cards -->
+  <ion-list>
+    <ion-item *ngFor="let group of groups | groupFilter:searchTerm" [routerLink]="['/group-details-page', group.groupId]">
+      <ion-label>
+        <h2>{{ group.groupName }}</h2>
+        <p>{{ group.description }}</p>
+      </ion-label>
+      <ng-container *ngIf="group">
+        <ion-badge [color]="group.memberCount && group.memberCount > 0 ? 'success' : 'danger'" slot="end">
+          {{ group.memberCount || 0 }} Members
+        </ion-badge>
+      </ng-container>
+      
+      <!-- {{ group.memberCount }} -->
+    </ion-item>
+  </ion-list>
+
+  <!-- Create New Group Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="presentAddGroupModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+</ion-content>
+

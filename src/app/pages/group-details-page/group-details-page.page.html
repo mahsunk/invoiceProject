@@ -1,0 +1,96 @@
+ <ion-header>
+  <ion-toolbar  >
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Bills</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content> 
+  <ion-list>
+    <ion-item>
+      <ion-select
+        interface="popover"
+        toggleIcon="add"
+        expandedIcon="remove"
+        aria-label="filter"
+        placeholder="Select filter"
+        (ionChange)="onSelectFilter($event.detail.value)">
+  
+        <ion-select-option value="daily">Daily</ion-select-option>
+        <ion-select-option value="monthly">Monthly</ion-select-option>
+        <ion-select-option value="yearly">Yearly</ion-select-option>
+        <ion-select-option value="custom">Custom</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+
+
+
+  <!-- Filtreleme butonları -->
+  <!-- <ion-list>
+  <ion-item>
+    <ion-select
+      interface="popover"
+      toggleIcon="add"
+      expandedIcon="remove"
+      aria-label="filter"
+      placeholder="Select filter"
+      (ionChange)="filterBy($event.detail.value)">
+
+      <ion-select-option value="daily">Günlük</ion-select-option>
+      <ion-select-option value="monthly">Aylık</ion-select-option>
+      <ion-select-option value="yearly">Yıllık</ion-select-option>
+      <ion-select-option value="custom">Özel</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list> -->
+
+<!--  
+<ion-segment>
+  <ion-segment-button value="daily" (click)="filterBy('daily')">Daily</ion-segment-button>
+  <ion-segment-button value="monthly" (click)="filterBy('monthly')">Monthly</ion-segment-button>
+  <ion-segment-button value="yearly" (click)="filterBy('yearly')">Yearly</ion-segment-button>
+  <ion-segment-button value="custom" (click)="openCustomDateModal()">Custom</ion-segment-button>
+</ion-segment> -->
+
+  <!-- Tarih aralığı seçimi -->
+  
+  
+
+    <ion-card *ngFor="let bill of filteredBills" (click)="viewBillDetails(bill)">
+    <ion-card-header>
+      {{ bill.description }}
+    </ion-card-header>
+    <ion-card-content>
+      Toplam Miktar: {{ bill.totalAmount }}
+    </ion-card-content>
+    <ion-card-content>
+      Tarih: {{ bill.billDate | date:'dd-MM-YYYY' }}
+    </ion-card-content>
+  </ion-card>  
+
+ 
+
+
+
+  <!-- Create New Group Button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="presentAddBillModal()" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>  
+
+
+
+
+
+

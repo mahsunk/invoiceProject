@@ -1,0 +1,17 @@
+ 
+  <ion-item *ngIf="segment === 'login'">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="segment === 'login'">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="segment === 'login'" lines="none">
+    <ion-label>Remember Password</ion-label>
+    <ion-checkbox [(ngModel)]="remember"></ion-checkbox>
+  </ion-item>
+  <ion-item *ngIf="segment === 'login'" lines="none">
+    <ion-label slot="start" (click)="forgotPassword()">Forget Password</ion-label>
+    <ion-label slot="end" (click)="forgotPassword()">Login</ion-label>
+  </ion-item>

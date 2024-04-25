@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Select Date Range</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Components for selecting date range will go here -->
+  <ion-item>
+    <ion-label>Start Date</ion-label>
+    <!-- <ion-datetime presentation="date" [(ngModel)]="startDate"></ion-datetime> -->
+    <ion-datetime presentation="date"  pickerFormat="YYYY-MM-DD"  [preferWheel]="true" [value]="startDate" [(ngModel)]="startDate"></ion-datetime>
+
+  </ion-item>
+  <ion-item>
+    <ion-label>End Date</ion-label>
+    <!-- <ion-datetime presentation="date" [(ngModel)]="endDate"></ion-datetime> -->
+    <ion-datetime presentation="date" pickerFormat="YYYY-MM-DD" [preferWheel]="true" [value]="endDate"  [(ngModel)]="endDate"></ion-datetime>
+
+
+
+
+  </ion-item>
+  <ion-button (click)="confirmDateRange()" fill="solid" color="primary" class="confirm-button">
+    Confirm
+  </ion-button>
+  
+</ion-content>

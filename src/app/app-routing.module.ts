@@ -1,21 +1,36 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'group-details-page/:id',
+    loadChildren: () => import('./pages/group-details-page/group-details-page.module').then(m => m.GroupDetailsPagePageModule)
+  },
+  // Tanımlanmayan bir URL'ye geldiğinde hata sayfasına yönlendir
+  {
+    path: '**',
+    redirectTo: 'error404',
+    pathMatch: 'full'
+  },
+  
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { /* preloadStrategy: PreloadAllModules */ })
   ],
   exports: [RouterModule]
 })

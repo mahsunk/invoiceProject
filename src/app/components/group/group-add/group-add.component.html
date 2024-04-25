@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Add New Group</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true" [disabled]="groupForm.invalid">Confirm</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <form *ngIf="groupForm" [formGroup]="groupForm" (ngSubmit)="confirm()">
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="primary">Group Name</ion-label>
+      <ion-input aria-label="Group Name"  formControlName="groupName" type="text" placeholder="Group Name"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="groupForm.get('groupName')?.touched && groupForm.get('groupName')?.hasError('required')" lines="none" color="danger">
+
+      <ion-label>Please enter a group name.</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="groupForm.get('groupName')?.touched && groupForm.get('groupName')?.hasError('minlength')" lines="none" color="danger">
+      <ion-label>Group name must be at least 3 characters long.</ion-label>
+    </ion-item>
+    <ion-item *ngIf="groupForm.get('groupName')?.touched && groupForm.get('groupName')?.hasError('maxlength')" lines="none" color="danger">
+      <ion-label>Group name cannot exceed 50 characters.</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">Description</ion-label>
+      <ion-textarea aria-label="Description" formControlName="description" rows="4" placeholder="Description"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="groupForm.get('description')?.touched && groupForm.get('description')?.hasError('maxlength')" lines="none" color="danger">
+      <ion-label>Description cannot exceed 250 characters.</ion-label>
+    </ion-item>
+
+    <!-- Diğer form elemanları buraya gelecek -->
+
+     
+  </form>
+</ion-content>
